@@ -1,0 +1,270 @@
+/* --- Basic Setup & Variables --- */
+:root {
+  --primary-gradient: linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  --error-red: hsl(0, 100%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --light-grayish-violet: hsl(270, 3%, 87%);
+  --dark-grayish-violet: hsl(279, 6%, 55%);
+  --very-dark-violet: hsl(278, 68%, 11%);
+  --font-family: 'Space Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 18px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+
+/* --- Main Layout --- */
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  gap: 250px;
+}
+
+.card-display {
+  width: 40%;
+  position: relative;
+  background-image: url('/images/bg-main-desktop.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding-left: 10%;
+}
+
+.form-section {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Card Styling --- */
+.card {
+  width: 447px;
+  height: 245px;
+  border-radius: 10px;
+  color: var(--white);
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.card--front {
+  background-image: url('/images/bg-card-front.png');
+  background-size: cover;
+  z-index: 1;
+}
+
+.card--back {
+  background-image: url('/images/bg-card-back.png');
+  background-size: cover;
+  transform: translateX(25%);
+  position: relative;
+}
+
+.card__logo {
+  width: 84px;
+  margin-bottom: 3.5rem;
+}
+
+.card__number {
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+
+.card__details {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.card__cvc {
+  position: absolute;
+  top: 111px;
+  right: 55px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* --- Form Styling --- */
+form, .success-state {
+  width: 100%;
+  max-width: 380px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex-grow: 1;
+}
+
+.expiry-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+label {
+  display: block;
+  text-transform: uppercase;
+  color: var(--very-dark-violet);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--light-grayish-violet);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input::placeholder {
+  color: var(--dark-grayish-violet);
+}
+
+input:focus {
+  border-color: transparent;
+  background-image: var(--primary-gradient);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: hsl(278, 68%, 20%);
+}
+
+/* --- States (Error, Success) --- */
+.error-message {
+  color: var(--error-red);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  min-height: 1rem;
+}
+
+input.error {
+  border-color: var(--error-red);
+}
+
+.hidden {
+  display: none;
+}
+
+.success-state {
+  text-align: center;
+}
+
+.success-state img {
+  width: 80px;
+  margin-bottom: 2rem;
+}
+
+.success-state h2 {
+  text-transform: uppercase;
+  color: var(--very-dark-violet);
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.success-state p {
+  color: var(--dark-grayish-violet);
+  margin-bottom: 2rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 950px) {
+  .container {
+    flex-direction: column;
+  }
+  .card-display {
+    width: 100%;
+    height: 300px;
+    min-height: auto;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    background-image: url('https://i.ibb.co/v4bLnx7/bg-main-mobile.png');
+    background-size: cover;
+  }
+  .card {
+    position: absolute;
+    width: 286px;
+    height: 157px;
+    padding: 1.2rem;
+    transform: none !important;
+  }
+  .card--front {
+    top: 120px;
+    left: 5%;
+    z-index: 1;
+  }
+  .card--back {
+    top: 30px;
+    right: 5%;
+    left: auto;
+  }
+  .card__logo {
+    width: 54px;
+    margin-bottom: 1.8rem;
+  }
+  .card__number {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  .card__details, .card__cvc {
+    font-size: 0.6rem;
+  }
+  .card__cvc {
+    top: 70px;
+    right: 35px;
+  }
+  .form-section {
+    width: 100%;
+    padding: 150px 1.5rem 2rem 1.5rem;
+  }
+}
